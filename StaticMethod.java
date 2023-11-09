@@ -1,18 +1,23 @@
-//some Variables all the values are same for all the objects.So those variables are declared with static keyword
-//So they are called static variable.
-
 class Mobile{
+
     String brandName;
     int price;
     static String model;
 
     public void Display(){
-        System.out.println(brandName +" : "+price+" : "+model);
+         System.out.println(brandName +" : "+price+" : "+model);
     }
 
+    public static void Display1(Mobile obj){
+        // Note:
+        // Static method doesn't directly work with instance variables of the class
+        // so the spectific boj must passed along the static methos to access thos instance variables.
+         System.out.println(obj.brandName +" : "+obj.price+" : "+model);
+    }
 }
 
-public class StaticVariable {
+public class StaticMethod {
+
     public static void main(String args[]){
 
         //Object 1
@@ -25,16 +30,17 @@ public class StaticVariable {
         obj2.price=125000;
         obj2.brandName="Samsung";
 
-        obj1.model="Phone";
+        Mobile.model="Phone";
         //automatically apply to all other objects because model is a static variable
         //best practice to call static varible is by using class name i.e Mobile.model
 
         obj1.Display();
         obj2.Display();
 
-    }
-}
+        //Static method can be called using class name
+        Mobile.Display1(obj1);
+        Mobile.Display1(obj2);
 
-//Output
-// Apple : 150000 : Phone
-// Samsung : 125000 : Phone
+    }
+    
+}
