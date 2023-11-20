@@ -50,7 +50,7 @@ public class SortingInLinkedList {
             }
             curr=curr.next;
         }
-
+ 
     }
 
     public static void main(String args[]) {
@@ -64,7 +64,6 @@ public class SortingInLinkedList {
         sortingInLinkedList.Display();
         sortingInLinkedList.Sort();
         sortingInLinkedList.Display();
-
 
     }
     

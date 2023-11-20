@@ -1,6 +1,7 @@
 public class LinkedList {
     Node head;
     Node tail;
+    int size=0;
 
     public static class Node {
         int data;
@@ -13,29 +14,27 @@ public class LinkedList {
     }
 
     public void addFirst(int data) {
-        // step 1: create new node with data
         Node newNode = new Node(data);
         if (head == null) {
+             size++;
             head = tail = newNode;
             return;
         }
-        // step 2: assign new node.next with head
         newNode.next = head;
-        // step 3: head = new node
         head = newNode;
+        size++;
     }
 
     public void addLast(int data) {
-        // step 1: create new node with data
         Node newNode = new Node(data);
         if (head == null) {
             head = tail = newNode;
+            size++;
             return;
         }
-        // step 2: assign tail.next to newNode
         tail.next = newNode;
-        // step 3: assign newNode to tail
         tail = newNode;
+        size++;
     }
 
     public void printLinkedList() {
@@ -47,13 +46,50 @@ public class LinkedList {
         System.out.println("null");
     }
 
-    public void Delete(){
-        if(head==null){
-            System.out.print("LinkedList is Empty");
+    public void RemoveFirst(){
+        if(size==0){
+            System.out.print("LL is Empty");
+            return;
+        }else if(size==1){
+            head=tail=null;
+            size=0;
             return;
         }
         head=head.next;
+        size--;
     }
+
+    public void RemoveLast(){
+
+        if(size==0){
+            System.out.print("LL is Empty");
+            return;
+        }else if(size==1){
+            head=tail=null;
+            size=0;
+            return;
+        }
+        Node prev=head;
+        for(int i=0;i<size-2;i++){
+            prev=prev.next;
+        }
+        prev.next=null;
+        tail=prev;
+        size--;
+    }
+
+    public void AddMiddle(int idx,int data){
+        Node newNode= new Node(data),temp=head;
+        int i=0;
+        while(i<idx-1){
+            temp=temp.next;
+            i++;
+        }
+        newNode=temp.next;
+        temp.next=newNode;
+    }
+
+
 
     public static void main(String args[]) {
         LinkedList ll = new LinkedList();
@@ -66,7 +102,22 @@ public class LinkedList {
         ll.addFirst(2);
         ll.addFirst(5);
         ll.printLinkedList();
-        ll.Delete();
+        ll.RemoveFirst();
         ll.printLinkedList();
+        ll.RemoveLast();
+        ll.printLinkedList();
+        ll.RemoveLast();
+        ll.printLinkedList();
+        ll.RemoveFirst();
+        ll.printLinkedList();
+        ll.RemoveFirst();
+        ll.RemoveFirst();
+        ll.addFirst(10);
+        ll.addFirst(20);
+        ll.addFirst(30);
+        ll.addFirst(40);
+        ll.addFirst(50);
+        ll.printLinkedList();
+
     }
 }
