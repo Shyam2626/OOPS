@@ -4,6 +4,8 @@
 //private variables can be accessed anywhere in the same class but for different class it must be accessed only through methods
 //This is called Encapsulation
 
+//for automatic generation of get and set methods simply right click and select source action option and select "Generate getters and setters"
+
 class Human{
     private int age;
     private String name;
